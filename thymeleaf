@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home Page</title>
+	<meta charset="UTF-8">
+	<link th:href="@{/styles/basicstyles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div>
+
+		<a th:href="@{/std/new}">Create New Student</a>
+
+		<table>
+			<tr>
+				<th>Sno</th>
+				<th>Name</th>
+				<th>CGPA</th>
+				<th>Actions</th>
+			</tr>
+
+			<tr th:each="std : ${stds}">
+				<td th:text="${std.sno}"></td>
+				<td th:text="${std.name}"></td>
+				<td th:text="${std.cgpa}"></td>
+
+				<td>
+					<a th:href="@{/std/edit/{sno}(sno=${std.sno})}">Edit</a>
+					<a th:href="@{/std/delete/{sno}(sno=${std.sno})}">Delete</a>
+				</td>
+
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>
